@@ -1,6 +1,8 @@
 # Mister-Mandibles
 A throwback to the famous Atari classic Centipede, this game is an updated browser based version perfect for use with a trackball mouse. Use your bug blaster to fire darts at an advancing neon centipede through a forest of mushrooms, collecting bonuses for catching stray fleas, spiders, and scorpions. If you fail to stop their terrifying advance then the arthropods formally declare their dominion over Earth.
 
+<!-- Atari Centipede is a fixed shooter arcade game. You must fight off centipedes, spiders, scorpions and fleas using your bugblaster! Survive for as long as possible in this exciting game! The bugblaster will fire small darts at the segmented centipede. The centipede consists of 10 to 12 body parts, including the head. Each segment of the centipede becomes a mushroom when shot. Each piece continues independently on its way down to you! Shoot his head, only then the centipede is destroyed. -->
+
 # Game Logic
 The screen will render the primary game logic and a score box to track the player's performance.
 Describe the logic involved in player decisions. 
@@ -13,7 +15,7 @@ Describe the logic that evaluates the player's victory/loss/progress status.
  Bugs enter the screen uniformly and assemble in formation.
  Darts destroy centipede segments and other enemies, awarding points.
  Bugs move according to their type, predators targeting Player, and Mr. Mandibles segments will separate and reform to break formation and move    
-  downwards, either colliding with and destroying the bug blaster or missing and reappearing at the top of the screen to re-enter the field. 
+  downwards, either colliding with and destroying the bug blaster or missing and reappearing at the top of the screen to re-enter the fiel d. 
  
 # Post-MVP Plans
 I would like to give the game elements a neon glow and simple outlines for a pleasant, modern feel.
@@ -37,7 +39,7 @@ utility.js: this file will contain helper methods for collision detection and sh
 # Date	Goals
 Thu. 06/23	Create GitHub repository. Complete README.md.
 
-Sun. 06/26	Layout the skeleton for mr-mandibles.js to render and interact with the canvas, initializing a game loop that will requestAnimationFrame() and allow for animations. Once animations can be drawn, create bugblaster.js and have it respond to keypresses to move Player left and right, then create pewpewdarts.js and have bug blaster be able to shoot.
+Sun. 06/26	Layout the skeleton for field.js to render and interact with the canvas, initializing a game loop that will requestAnimationFrame() and allow for animations. Once animations can be drawn, create bugblaster.js and have it respond to keypresses to move Player left and right, then create blaster.js and have bug blaster be able to shoot.
 
 Tue. 06/28	Create bugs with enemies.js and have them enter the screen and go towards an empty space in the formation and remain in formation according to type. Create divergent spider,scorpion, and flea patterns. Implement dart collision detection so that enemies are destroyable and grant points.
 
