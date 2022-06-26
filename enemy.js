@@ -25,27 +25,27 @@ speed and direction
     all heads.
 */
 
-/*MVP Spiders
+/*MPV Spiders
     Spiders move across the player area in a zig - zag pattern and eat some of the mushrooms; 
     600 points default for shooting
     speed
 */
 
-/*Post MVP Spiders
+/*Post MPV Spiders
     Spiders are worth 300, 600, or 900 points depending on how close the player shoots it.
 */
 
-/*MVP Scorpions
+/*MPV Scorpions
     Scorpions move horizontally across the screen
     Worth 1,000 points each
     speed
 */
 
-/*Post MVP Scorpions
+/*Post MPV Scorpions
     Scorpions move horizontally across the screen, turning every mushroom they touch into poison mushrooms.
 */
 
-/*Post MVP Fleas
+/*Post MPV Fleas
     Fleas drop vertically and disappear upon touching the bottom of the screen, 
     occasionally leaving a trail of mushrooms in their path when only a few mushrooms are in the player movement area;
     they are worth 200 points and takes two shots to destroy.

@@ -5,7 +5,10 @@ collision disappear, counter tick, respawn
 movement trackball motion 
 limit field
 left click fires
-pew pews need to fire straight lines and destroy objects during collision*/
+pew pews need to fire straight lines and destroy objects
+default controls for trackball and left mouse, 
+    otherwise left right with arrow keys
+during collision*/
 
 /*Post MPV
 glow render

@@ -1,0 +1,98 @@
+/* Game display*/
+#game {
+    width: 496px;
+    height: 480px;
+    margin: 0 auto;
+}
+#contentGame {
+    width: 100%;
+    margin: 20px 0px 0px 0px;
+    display: none;
+    float: left;
+}
+
+/* Scoreboard */
+#player,
+#score,
+#lifeCounter {
+    padding: 3px;
+    font-size: 17px;
+    font-weight: bold;
+    display: block;
+    float: left;
+}
+#score {
+    font-weight: bold;
+    border-bottom: 1px solid #FFD166;
+}
+
+#player {
+    width: 100px;
+    margin: 0px 106px 0px 0px;
+}
+
+#lifeCounter {
+    width: 100px;
+    margin: 0px 106px 0px 0px;
+    background: url('') no-repeat center center #06D6A0;
+}
+#contentStartScreen{
+    width: 100%;
+    display: block;
+    float: left;
+}
+/* End Screen Bottom Graphic */
+.bottomGraphic {
+    width: 496px;
+    height: 95px;
+    background: url('')no-repeat center center #EF476F;
+    border:#FFD166 1px solid;
+    margin: 50px auto;
+    display: block;
+}
+
+/* Start Button */
+.start {
+    width: 110px;
+    margin: 0px auto;
+    display: block;
+}
+
+/* Bug Blaster */
+.blasterMoveLeft,
+.blasterMoveRight,
+.blasterPew,
+.blasterAntimatter {
+    width: 35px;
+    height: 25px;
+    line-height: 25px;
+    background: #EF476F;
+    font-family: arial;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #06D6A0;
+    text-align: center;
+    margin: 0px 5px;
+    border-radius: 3px;
+    display: block;
+    float: left;
+}
+
+.blasterMoveLeft::before,
+.blasterMoveRight::before {
+    content: '';
+    width: 13px;
+    height: 11px;
+    background: url('') no-repeat 0 -99px;
+    margin: 7px auto;
+    display: block;
+}
+
+.blasterMoveRight::before {
+    background: url('') no-repeat -14px -99px;
+}
+
+.blasterPew,
+.blasterAntimatter {
+    width: 65px;
+}
