@@ -5,59 +5,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" defer src='/blaster.js'></script>
-    <script type="text/javascript" defer src='/enemy.js'></script>
-    <script type="text/javascript" defer src='/field.js'></script>
-    <script type="text/javascript" defer src='/pewpewdarts.js'></script>
-    <script type="text/javascript" defer src='/game.js'></script>
-    <link rel="stylesheet" href="/style.css">
-    <title>START</title>
+    <script type="text/javascript" defer src='blaster.js'></script>
+    <script type="text/javascript" defer src='enemy.js'></script>
+    <script type="text/javascript" defer src='field.js'></script>
+    <script type="text/javascript" defer src='pewpewdarts.js'></script>
+    <script type="text/javascript" defer src='game.js'></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Mr. Mandibles</title>
 </head>
 
 <body>
-    <!-- scoreboard/player lives -->
-    <div class="score">
-        <div class="player">Player</div>
-        <div class="livesLeft">Lives</div>
-        <div class="scoreboardScore">0</div>
-    </div>
-    <div id='game'>
-        <span id='score'>
-            HIGH SCORE
-            <b>0</b>
-        </span>
-        <span id='livesLeft'>
-            <b>0</b>
-        </span>
-        <div id='contentStartScreen'>
-            <span id="startGraphic"></span>
-            <ul id="option">
-                <li>
-                    <a href="#" id='start'>START</a>
-                </li>
-                <li>
-                    <a href="#" id='help'>INSTRUCIONS</a>
-                </li>
-            </ul>
-            <div id="instrucions">
-                <a href="" id="close" title="Close"></a>
-                <b>controls</b>
-                <p>move left</p>
-                <span id="blasterMoveLeft"></span>
-                <p>move right</p>
-                <span id="blasterMoveRight"></span>
-                <p>shot</p>
-                <span id="blasterPew">space</span>
+    <div style="text-align:center">
+        <div class="canvas-holder">
+            <canvas id="game-canvas" width="1400 height=1000"></canvas>
+            <div class="game-hud" id="hud"></div>
+            <div class="menu" style="display: none" id="menu">
             </div>
         </div>
-        <div id='contentGame'>
-            <!-- enemy -->
-            <!-- blaster -->
-            <!-- dart -->
-        </div>
-    </div>
-    <!-- method to stitch pages within same url
-    start screen, game, end screen -->
 </body>
 
 </html>
