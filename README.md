@@ -20,7 +20,7 @@ Describe the logic that evaluates the player's victory/loss/progress status.
 # Post-MVP Plans
 I would like to give the game elements a neon glow and simple outlines for a pleasant, modern feel.
 It would also be nice to make a custom art title screen.
-Eventually it would be nice to make an app version, but only if Atari wouldn't skin me alive:)
+Sometime I'd love to put an easter egg that if you achieve the top score the next appearance of the centipede will deposit an egg amd increase in speed. If the player can manage to shoot the egg before the centipede reaches the blaster, the game field changes to new sprites and color scheme, Mr. Millipede now attacks the player, and the player has five new lives to spend. The end screen becomes Mr. Millipede high score. So basically it becomes an entirely new game.
 
 # Project Planning
 Mr. Mandibles will use plain JavaScript, CSS, and HTML5 to render and animate the game. The game's main components will be broken down as follows:
@@ -33,7 +33,7 @@ enemy.js: this file will contain the logic for an enemy's movement when entering
 
 pewpewdarts.js: this file will act as a helper for blaster.js and enemy.js, rendering the blaster's dart shot movement and detecting enemy collision.
 
-utility.js: this file will contain helper methods for collision detection and shared movements of objects.
+game.js: this file will contain basic game canvas and helper methods for collision detection and shared movements of objects.
 
 
 # Date	Goals
