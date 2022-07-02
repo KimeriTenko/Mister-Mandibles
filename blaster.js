@@ -1,58 +1,121 @@
 /*Blaster MPV
-arrowhead shape
-movement bordered by demarcation boundary
+left right movement
 collision disappear, counter tick, respawn
-movement trackball motion 
-limit field
-left click fires
-pew pews need to fire straight lines and destroy objects
-default controls for trackball and left mouse, 
-    otherwise left right with arrow keys
-during collision*/
 
 /*Post MPV
-glow render
+allow trackball controls if available and left mouse click fire
 collision flash
  The Bug Blaster is destroyed when hit by any enemy, after which any poisonous or partially damaged mushrooms revert to normal.
 */
 // *****************************************
 /*Blaster Defined*/
-function Blaster(x, y, size, speed) {
+// class Blaster {
+//     constructor() {
+//         this.position = {
+//             x: 200,
+//             y: 200
+//         }
+//         this.velocity = {
+//             x:0,
+//             y: 0
+//         }
+// const image = new Image()
+// image.src = "./assets/spaceship.png"
+// this.image = image
+// this.width = 50
+// this.height = 50
+// //     }
+// function draw() {
+//     // c.fillstyle = "red"
+//     // c.fillRect(this.position.x, this.position.y, this.width, this.height)
+//     c.drawImage(this.image, this.position.x, this.position.y)
+// }
+// // }
 
-}
-/*Properties*/
-this.x = x;
-this.y = y;
-this.size = size;
-this.speed = speed;
+const Blaster = new Blaster()
+Blaster.draw()
 
-/*Methods
-Add Trackball Functionality Post MPV*/
-this.move = function(){
-    if (keys[LEFT_ARROW]) {
-        this.x -= this.speed;
-    }
-    if (keys[RIGHT_ARROW]) {
-        this.x += this.speed;
-    }
-    if (keys[UP_ARROW]) {
-        this.y -= this.speed;
-    }
-    if (keys[DOWN_ARROW]) {
-        this.y += this.speed;
-    }
-    this.x = constrain(this.x, 0, width);
-    this.y = constrain(this.y, 30, height - this.size/2);
-}
-
-this.show = function () {
-    noStroke()
-    fill(0, #FFD166, 0)//color sprite//
-    rect(this.x - 2, this.y - this.size / 2 - 5, 4, 6);//blastersprite//
-    ellipse(this.x, this.y, this.size, this.size);
-}
-this.update = function() {
-    this.move();
-    this.show();
+function animate() {
+    requestAnimationFrame(animate)
+    Blaster.draw()
 }
 
+/*Blaster Appearance*/
+blaster: game.graphics.Sprite({
+    sheetSrc: "assets/General Sprites.png",
+    spriteX: 0,
+    spriteY: 400,
+    spriteWidth: 40,
+    spriteHeight: 40,
+    numFrames: 1,
+    timePerFrame: 0,
+    cols: 1,
+    rows: 1
+}),
+
+    /*Dart Function and Appearance*/
+    dart; game.graphics.Sprite({
+        drawFunction: (_elapsedTime, { x, y, rot, width, height }, context) => {
+            context.save();
+            context.translate(x + width / 2, y + height / 2);
+            context.rotate(rot * Math.PI / 180);
+            context.translate(-x - width / 2, -y - height / 2);
+            const fillStyle = context.fillStyle;
+            context.fillStyle = "#FF0000";
+            context.fillRect(x, y, width, height);
+            context.fillStyle = fillStyle;
+            context.restore();
+        }
+    }),
+
+        /*Blaster Features*/
+        game.Blaster = (spec) => {
+            const object = game.Object(spec);
+            object.poisonedTimer = 10000;
+            object.elapsedPoisonedTimer = 0;
+            object.poisoned = false;
+            object.dartsTimer = spec.dartsTimer ?? 300;
+            object.elapsedDartsTimer = 0;
+
+            /*Poison Feature*/
+            const parentUpdate = object.update;
+            object.update = (elapsedTime) => {
+                if (object.poisoned) {
+                    object.dy = 0.5;
+                    object.elapsedPoisonedTimer += elapsedTime;
+                    if (object.elapsedPoisonedTimer > object.poisonedTimer) {
+                        object.poisoned = false;
+                        object.elapsedPoisonedTimer = 0;
+                    }
+                }
+                parentUpdate(elapsedTime);
+                object.x = Math.max(0, Math.min(object.x, game.width - object.width));
+                object.y = Math.max(game.maxPlayerHeight, Math.min(object.y, game.height - object.height));
+                object.dx = object.dy = 0;
+                object.elapsedDartsTimer += elapsedTime;
+            };
+            object.poison = () => {
+                object.poisoned = true;
+            }
+            object.moveUp = () => {
+                object.dy = -0.75;
+            }
+            object.moveDown = () => {
+                object.dy = 0.75;
+            }
+            object.moveLeft = () => {
+                object.dx = -0.5;
+            }
+            object.moveRight = () => {
+                object.dx = 0.5;
+            }
+
+            object.shoot = () => {
+                if (object.elapsedDartTimer > object.dartTimer) {
+                    object.elapsedDartTimer = 0;
+                    game.darts.push(game.Dart({ x: object.x + object.width / 2 - 5, y: object.y - object.height / 2, dx: 0, dy: -1.5, width: 5, height: 50, sprite: game.sprites.dart }));
+                }
+            }
+
+            return object;
+        }

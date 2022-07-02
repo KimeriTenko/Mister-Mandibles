@@ -8,20 +8,76 @@
     <script type="text/javascript" defer src='blaster.js'></script>
     <script type="text/javascript" defer src='enemy.js'></script>
     <script type="text/javascript" defer src='field.js'></script>
-    <script type="text/javascript" defer src='pewpewdarts.js'></script>
+    <script type="text/javascript" defer src='phaser.min.js'></script>
     <script type="text/javascript" defer src='game.js'></script>
     <link rel="stylesheet" href="style.css">
     <title>Mr. Mandibles</title>
 </head>
 
 <body>
+    <style>
+        body {
+            margin: 0;
+
+        }
+    </style>
     <div style="text-align:center">
+
         <div class="canvas-holder">
-            <canvas id="game-canvas" width="1400 height=1000"></canvas>
-            <div class="game-hud" id="hud"></div>
-            <div class="menu" style="display: none" id="menu">
-            </div>
+            <canvas id="canvas" width="744" height="1281"> == $0
+
+                <body onload="startGame()">
+                    <script>
+                        var game = new Phaser.Game(480, 320, Phaser.CANVAS, canvas, {
+                            preload: preload, create: create, update: update
+                        });
+                        function preload() {
+                            game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+                            game.scale.pageAlignHorizontally = true;
+                            game.scale.pageAlignVertically = true;
+                        }
+                        function create() {
+
+                        }
+                        function update() { }
+                    </script>
+                    // function startGame() {
+                    // Canvas.start();
+                    // }
+                    // let Canvas = {
+                    // canvas: documentCreateElement("canvas"),
+                    // start: function () {
+                    // this.canvas.width = canvasWidth;
+                    // this.canvas.height = canvasHeight;
+                    // this.context = this.canvas.getContext("2d");
+                    // document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+                    // }
+                    // }
+                    <style>
+                        .button {
+                            border: none;
+                            background: none;
+                            position: absolute;
+                            top: 50%;
+                            z-index: 1;
+                            transform: translate(-50%, -50%);
+                            -webkit-transform: translate(-50%, -50%);
+                            -moz-transform: translate(-50%, -50%);
+                            -ms-transform: translate(-50, -50%);
+                        }
+                    </style>
+                    <button type="button">START</button>
+
+
+                    </script>
+                    <div class="game-hud" id="hud">
+                    </div>
+                    <div id="sprite-container">
+                        <div id="sprite-image">
+                        </div>
+                    </div>
         </div>
+    </div>
 </body>
 
 </html>

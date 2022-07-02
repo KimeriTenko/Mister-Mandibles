@@ -25,16 +25,13 @@ Sometime I'd love to put an easter egg that if you achieve the top score the nex
 # Project Planning
 Mr. Mandibles will use plain JavaScript, CSS, and HTML5 to render and animate the game. The game's main components will be broken down as follows:
 
-field.js: this file will construct the background and initialize the primary game loop. The field will contain a bug blaster at the bottom and have predetermined spaces for where enemies can spawn and settle into formation.
+field.js: this file will construct the background and initialize the primary game loop. The field will contain a bug blaster at the bottom and have predetermined spaces for where enemies can spawn and settle into formation. Mushroom elements will be added to this file.
 
-blaster.js: this file will contain the logic for controlling the player's bug blaster, allowing it to move, and keeping track of whether the player has collided with an enemy and lost.
+blaster.js: this file will contain the logic for controlling the player's bug blaster, allowing it to move, and keeping track of whether the player has collided with an enemy and lost. Rendering for the blaster's dart shot movement and detecting enemy collision.
 
 enemy.js: this file will contain the logic for an enemy's movement when entering the field, when breaking formation to attack the bug blaster, and when re-entering formation after an attack. Enemy destruction will result in a score increase.
 
-pewpewdarts.js: this file will act as a helper for blaster.js and enemy.js, rendering the blaster's dart shot movement and detecting enemy collision.
-
-game.js: this file will contain basic game canvas and helper methods for collision detection and shared movements of objects.
-
+game.js: this file will contain basic gamehelper methods for collision detection and shared movements of objects.
 
 # Date	Goals
 Thu. 06/23	Create GitHub repository. Complete README.md.

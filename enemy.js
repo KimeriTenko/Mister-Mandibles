@@ -51,3 +51,100 @@ speed and direction
     they are worth 200 points and takes two shots to destroy.
 
 */
+game.sprites = {
+    centipedeHead: game.graphics.Sprite({
+        sheetSrc: "assets/General Sprites.png",
+        spriteX: 0,
+        spriteY: 0,
+        spriteWidth: 40,
+        spriteHeight: 40,
+        numFrames: 4,
+        timePerFrame: 100,
+    }),
+    centipedeBody: game.graphics.Sprite({
+        sheetSrc: "assets/General Sprites.png",
+        spriteX: 0,
+        spriteY: 80,
+        spriteWidth: 40,
+        spriteHeight: 40,
+        numFrames: 4,
+        timePerFrame: 100,
+    }),
+    spider: game.graphics.Sprite({
+        sheetSrc: "assets/General Sprites.png",
+        spriteX: 0,
+        spriteY: 160,
+        spriteWidth: 80,
+        spriteHeight: 40,
+        numFrames: 8,
+        timePerFrame: 100,
+        cols: 4,
+        rows: 2,
+    }),
+    flea: game.graphics.Sprite({
+        sheetSrc: "assets/General Sprites.png",
+        spriteX: 320,
+        spriteY: 160,
+        spriteWidth: 45,
+        spriteHeight: 40,
+        numFrames: 4,
+        timePerFrame: 500,
+        cols: 2,
+        rows: 2,
+    }),
+    scorpion: game.graphics.Sprite({
+        sheetSrc: "assets/General Sprites.png",
+        spriteX: 0,
+        spriteY: 280,
+        spriteWidth: 80,
+        spriteHeight: 40,
+        numFrames: 4,
+        timePerFrame: 500,
+        cols: 4,
+    }),
+    
+    explosionBig: game.graphics.Sprite({
+        sheetSrc: "assets/General Sprites.png",
+        spriteX: 0,
+        spriteY: 320,
+        numFrames: 8,
+        spriteWidth: 80,
+        spriteHeight: 40,
+        cols: 4,
+        rows: 2,
+        timePerFrame: 30,
+    }),
+    explosionSmall: game.graphics.Sprite({
+        sheetSrc: "assets/General Sprites.png",
+        spriteX: 320,
+        spriteY: 320,
+        numFrames: 6,
+        spriteWidth: 40,
+        spriteHeight: 40,
+        cols: 3,
+        rows: 2,
+        timePerFrame: 30,
+    }),
+    regularMushrooms: [3, 2, 1, 0].map(i =>
+        game.graphics.Sprite({
+            sheetSrc: "assets/images/centipede-assets.png",
+            spriteX: 320 + i * 40,
+            spriteY: 0,
+            numFrames: 1,
+            spriteWidth: 40,
+            spriteHeight: 40,
+            timePerFrame: 0,
+        })
+    ),
+    poisonMushrooms: [3, 2, 1, 0].map(i =>
+        game.graphics.Sprite({
+            sheetSrc: "assets/images/centipede-assets.png",
+            spriteX: 320 + i * 40,
+            spriteY: 40,
+            numFrames: 1,
+            spriteWidth: 40,
+            spriteHeight: 40,
+            timePerFrame: 0,
+        })
+    )
+};
