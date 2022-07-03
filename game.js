@@ -1,4 +1,3 @@
-/***************************************/
 /*Opening Menu Content*/
 const menu = {};
 menu.initialize = () => {
@@ -83,7 +82,8 @@ menu.initialize();
 
 
 /*Initial Game Graphics*/
-var game = new Phaser.game(744, 1281, Phaser.AUTO);
+`var Phaser = Phaser || {}`
+let game = new Phaser.game(744, 1281, Phaser.AUTO);
 
 let gameState = {
     preload: function () {
