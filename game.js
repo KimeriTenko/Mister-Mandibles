@@ -79,7 +79,29 @@ menu.draw = () => {
 }
 
 menu.initialize();
+
+
+
 /*Initial Game Graphics*/
+var game = new Phaser.game(744, 1281, Phaser.AUTO);
+
+let gameState = {
+    preload: function () {
+
+    },
+    create: function () {
+
+    },
+    update: function () {
+
+    }
+};
+
+game.state.add("gameState", "gameState");
+game.state.start("gameState");
+
+
+
 game.graphics = (
     (context) => {
         context.imageSmoothingEnabled = false;
@@ -135,13 +157,53 @@ game.graphics = (
         return { clear, Sprite };
     }
 )(document.getElementById("game-canvas").getContext("2d"));
-/*Game Sounds*/
-// game.sounds {
-//     mushroom_hit: new Audio("assets/mushroomHit.mp3"),
-//     enemy_hit: new Audio("assets/enemyHit.mp3"),
-//     laser: new Audio("assets/pewpew.mp3"),
-// }
+// /*Game Sounds*/
+game.sounds = {
+    mushroom_hit: new Audio("assets/mushroomHit.mp3"),
+    enemy_hit: new Audio("assets/enemyHit.mp3"),
+    laser: new Audio("assets/pewpew.mp3"),
+}
 
+/*Primary Game Elements*/
+// const game = {
+//     stopped: false,
+//     width: document.getElementById('game-canvas').width,
+//     height: document.getElementById('game-canvas').height,
+//     level: 1,
+// };
+
+game.resume = () => {
+    game.stopped = false;
+    game.lastTimeStamp = performance.now();
+    menu.reRegisterKeys();
+    requestAnimationFrame(gameLoop);
+}
+
+game.resetObjects = () => {
+    game.blaster.x = game.width / 2;
+    game.blaser.y = game.height / 2;
+    game.darts = [];
+    game.explosions = [];
+    game.mushroomDims = { width: 40, height: 40 };
+    game.mushrooms = game.Mushroom.generateMushrooms(game.mushroomDims);
+    game.centipede = game.Centipede({ segments: Math.min(game.level * 5 + 5, 15), startX: game.width / 2, startY: 0, rot: 180, width: 40, height: 40, dx: 0.2, dy: 0 });
+    game.spiders = [];
+    game.fleas = [];
+    game.scorpions = [];
+}
+
+game.gameOver = () => {
+    menu.showMenu();
+    menu.setState('game-over');
+    menu.addScore(game.score);
+
+    menu.onHide = initialize;
+}
+
+game.getObjects = () => [game.player, ...game.bullets, ...game.mushrooms, ...game.spiders, ...game.fleas, ...game.scorpions, game.centipede, ...game.explosions];
+game.getDartCollidableObjects = () => [...game.mushrooms, ...game.spiders, ...game.fleas, ...game.scorpions, game.centipede];
+game.getMushroomCollidableObjects = () => [game.player, ...game.scorpions, game.centipede];
+game.getBlasterCollidableObjects = () => [...game.spiders, ...game.fleas, ...game.scorpions, game.centipede]
 
 /*Primary Game Objects and Modifiers*/
 
@@ -199,4 +261,40 @@ const gameLoop = (time) => {
 
 initialize();
 menu.reRegisterKeys();
-requestAnimationFrame(gameLoop); 
+requestAnimationFrame(gameLoop);
+
+// *************************************
+/*Keyboard Inputs*/
+game.input = (() => {
+    "use strict";
+    const Keyboard = () => {
+        const keys = {};
+        const handlers = {};
+        const keyPress = (event) => {
+            keys[event.key] = event.timeStamp;
+        };
+        const keyRelease = (event) => {
+            delete keys[event.key];
+        };
+        const registerCommand = (key, handler) => {
+            handlers[key] = handler;
+        };
+        const unregisterCommand = (key) => {
+            delete handlers[key];
+        }
+        const update = (elapsedTime) => {
+            for (let key in keys) {
+                if (keys.hasOwnProperty(key)) {
+                    if (handlers[key]) {
+                        handlers[key](elapsedTime);
+                    }
+                }
+            }
+        };
+        window.addEventListener("keydown", keyPress);
+        window.addEventListener("keyup", keyRelease);
+        return { keys, handlers, registerCommand, unregisterCommand, update };
+    }
+    return { Keyboard };
+})();
+

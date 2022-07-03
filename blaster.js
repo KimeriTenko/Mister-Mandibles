@@ -32,13 +32,14 @@ collision flash
 // }
 // // }
 
-const Blaster = new Blaster()
-Blaster.draw()
+// const Blaster = new Blaster()
+// Blaster.draw()
 
-function animate() {
-    requestAnimationFrame(animate)
-    Blaster.draw()
-}
+// function animate() {
+//     requestAnimationFrame(animate)
+//     Blaster.draw()
+// }
+var game = new Phaser.game(744, 1281, Phaser.AUTO);
 
 /*Blaster Appearance*/
 blaster: game.graphics.Sprite({

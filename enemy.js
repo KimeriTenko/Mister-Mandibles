@@ -51,8 +51,10 @@ speed and direction
     they are worth 200 points and takes two shots to destroy.
 
 */
+var game = new Phaser.game(744, 1281, Phaser.AUTO);
+
 game.sprites = {
-    centipedeHead: game.graphics.Sprite({
+    centipedeHead: game.graphics?.Sprite({
         sheetSrc: "assets/General Sprites.png",
         spriteX: 0,
         spriteY: 0,
@@ -61,7 +63,7 @@ game.sprites = {
         numFrames: 4,
         timePerFrame: 100,
     }),
-    centipedeBody: game.graphics.Sprite({
+    centipedeBody: game.graphics?.Sprite({
         sheetSrc: "assets/General Sprites.png",
         spriteX: 0,
         spriteY: 80,
@@ -70,7 +72,7 @@ game.sprites = {
         numFrames: 4,
         timePerFrame: 100,
     }),
-    spider: game.graphics.Sprite({
+    spider: game.graphics?.Sprite({
         sheetSrc: "assets/General Sprites.png",
         spriteX: 0,
         spriteY: 160,
@@ -81,7 +83,7 @@ game.sprites = {
         cols: 4,
         rows: 2,
     }),
-    flea: game.graphics.Sprite({
+    flea: game.graphics?.Sprite({
         sheetSrc: "assets/General Sprites.png",
         spriteX: 320,
         spriteY: 160,
@@ -102,8 +104,8 @@ game.sprites = {
         timePerFrame: 500,
         cols: 4,
     }),
-    
-    explosionBig: game.graphics.Sprite({
+
+    explosionBig: game.graphics?.Sprite({
         sheetSrc: "assets/General Sprites.png",
         spriteX: 0,
         spriteY: 320,
@@ -114,7 +116,7 @@ game.sprites = {
         rows: 2,
         timePerFrame: 30,
     }),
-    explosionSmall: game.graphics.Sprite({
+    explosionSmall: game.graphics?.Sprite({
         sheetSrc: "assets/General Sprites.png",
         spriteX: 320,
         spriteY: 320,
@@ -126,7 +128,7 @@ game.sprites = {
         timePerFrame: 30,
     }),
     regularMushrooms: [3, 2, 1, 0].map(i =>
-        game.graphics.Sprite({
+        game.graphics?.Sprite({
             sheetSrc: "assets/images/centipede-assets.png",
             spriteX: 320 + i * 40,
             spriteY: 0,
@@ -137,7 +139,7 @@ game.sprites = {
         })
     ),
     poisonMushrooms: [3, 2, 1, 0].map(i =>
-        game.graphics.Sprite({
+        game.graphics?.Sprite({
             sheetSrc: "assets/images/centipede-assets.png",
             spriteX: 320 + i * 40,
             spriteY: 40,
