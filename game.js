@@ -17,13 +17,13 @@ menu.setState = (state) => {
 }
 menu.reRegisterKeys = () => {
     Object.keys(game.keyboard.handlers).map(key => game.keyboard.unregisterCommand(key));
-    game.keyboard.registerCommand(menu.controls.moveUp, game.player.moveUp);
-    game.keyboard.registerCommand(menu.controls.moveDown, game.player.moveDown);
-    game.keyboard.registerCommand(menu.controls.moveLeft, game.player.moveLeft);
-    game.keyboard.registerCommand(menu.controls.moveRight, game.player.moveRight);
-    game.keyboard.registerCommand(menu.controls.shoot, game.player.shoot);
-    game.keyboard.registerCommand("Escape", () => { menu.draw(); game.stopped = true; });
-    localStorage.setItem("controls", JSON.stringify(menu.controls));
+    //     game.keyboard.registerCommand(menu.controls.moveUp, game.blaster.moveUp);
+    //     game.keyboard.registerCommand(menu.controls.moveDown, game.blaster.moveDown);
+    //     game.keyboard.registerCommand(menu.controls.moveLeft, game.blaster.moveLeft);
+    //     game.keyboard.registerCommand(menu.controls.moveRight, game.blaster.moveRight);
+    //     game.keyboard.registerCommand(menu.controls.shoot, game.blaster.shoot);
+    //     game.keyboard.registerCommand("Escape", () => { menu.draw(); game.stopped = true; });
+    //     localStorage.setItem("controls", JSON.stringify(menu.controls))
 }
 menu.hide = () => {
     const menuElement = document.getElementById("menu");
@@ -82,8 +82,9 @@ menu.initialize();
 
 
 /*Initial Game Graphics*/
-`var Phaser = Phaser || {}`
-let game = new Phaser.game(744, 1281, Phaser.AUTO);
+console.log(Phaser.game)
+// `var Phaser = Phaser || {}`
+let game = new Phaser.Game(744, 1281, Phaser.AUTO);
 
 let gameState = {
     preload: function () {
@@ -97,8 +98,8 @@ let gameState = {
     }
 };
 
-game.state.add("gameState", "gameState");
-game.state.start("gameState");
+game.state.add("GameState", "GameState");
+game.state.start("GameState");
 
 
 
@@ -157,12 +158,8 @@ game.graphics = (
         return { clear, Sprite };
     }
 )(document.getElementById("game-canvas").getContext("2d"));
-// /*Game Sounds*/
-game.sounds = {
-    mushroom_hit: new Audio("assets/mushroomHit.mp3"),
-    enemy_hit: new Audio("assets/enemyHit.mp3"),
-    laser: new Audio("assets/pewpew.mp3"),
-}
+
+
 
 /*Primary Game Elements*/
 // const game = {
@@ -213,23 +210,22 @@ const c = canvas.getContext("2d")
 canvas.width = window.innerWidth
 canvas.height = window.innerHeight
 
-game.keyboard = game.input.Keyboard();
-const handleInput = game.keyboard.update;
+
 
 const initialize = () => {
     game.score = 0;
     game.totalTime = 0;
     game.lastTimeStamp = performance.now();
 
-    game.blaster = game.Blaster({ x: game.width / 2 - 20, y: game.height - 40, width: 40, height: 40, sprite: game.sprites.blaster });
+    // game.blaster = game.Blaster({ x: game.width / 2 - 20, y: game.height - 40, width: 40, height: 40, sprite: game.sprites.blaster });
     game.darts = [];
-    game.mushrooms = game.Mushroom.generateMushrooms({ width: 40, height: 40 });
+    // game.mushrooms = game.Mushroom.generateMushrooms({ width: 40, height: 40 });
 };
 
 const update = (elapsedTime) => {
     game.totalTime += elapsedTime;
 
-    game.player.update(elapsedTime);
+    game.blaster.update(elapsedTime);
     game.getObjects().map((object) => object.update(elapsedTime));
     game.darts.map((dart) => game.getDartCollidableObjects().filter((object) => object.intersects(dart))).map((objects, i) => {
         if (objects.length > 0) {
@@ -259,12 +255,10 @@ const gameLoop = (time) => {
     }
 };
 
-initialize();
-menu.reRegisterKeys();
-requestAnimationFrame(gameLoop);
 
 // *************************************
 /*Keyboard Inputs*/
+
 game.input = (() => {
     "use strict";
     const Keyboard = () => {
@@ -297,4 +291,17 @@ game.input = (() => {
     }
     return { Keyboard };
 })();
+// game.keyboard = game.input.Keyboard();
+// const handleInput = game.keyboard.update;
 
+// game.sprites = {}
+// initialize();
+// menu.reRegisterKeys();
+// requestAnimationFrame(gameLoop);
+
+/* Game Sounds*/
+game.sounds = {
+    mushroom_hit: new Audio("assets/mushroomHit.mp3"),
+    enemy_hit: new Audio("assets/enemyHit.mp3"),
+    laser: new Audio("assets/pewpew.mp3"),
+};

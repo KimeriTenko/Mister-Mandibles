@@ -51,9 +51,11 @@ speed and direction
     they are worth 200 points and takes two shots to destroy.
 
 */
-var game = new Phaser.game(744, 1281, Phaser.AUTO);
+// var game = new Phaser.game(744, 1281, Phaser.AUTO);
 
 game.sprites = {
+    ...game.sprites,
+
     centipedeHead: game.graphics?.Sprite({
         sheetSrc: "assets/General Sprites.png",
         spriteX: 0,
@@ -129,7 +131,7 @@ game.sprites = {
     }),
     regularMushrooms: [3, 2, 1, 0].map(i =>
         game.graphics?.Sprite({
-            sheetSrc: "assets/images/centipede-assets.png",
+            sheetSrc: "assets/General Sprites.png",
             spriteX: 320 + i * 40,
             spriteY: 0,
             numFrames: 1,
@@ -140,7 +142,7 @@ game.sprites = {
     ),
     poisonMushrooms: [3, 2, 1, 0].map(i =>
         game.graphics?.Sprite({
-            sheetSrc: "assets/images/centipede-assets.png",
+            sheetSrc: "assets/General Sprites.png",
             spriteX: 320 + i * 40,
             spriteY: 40,
             numFrames: 1,
