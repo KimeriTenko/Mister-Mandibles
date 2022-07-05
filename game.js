@@ -119,26 +119,172 @@ console.log(Phaser.game)
 // class Game extends Phaser.Game {
 //     constructor() {
 //         super('100%', '100%', Phaser.AUTO, 'gameArea');}
-var game = new Phaser.Game(744, 1281, Phaser.CANVAS,'Mr. Mandibles', {
-    preload:preload, create:create, update:update});
+var game = new Phaser.Game(744, 1281, Phaser.CANVAS, 'Mr. Mandibles', {
+    preload: preload, create: create, update: update
+});
 
 // game.state.add("GameState", "GameState");
 
 let gameState = {
     preload: function () {
-        game.load.image('centipede', 'assets/centipede.png');
-        game.load.image('mushroom', 'assets/mushroom.png');
-        game.load.image('blaster', 'assets/blaster.png');
-        game.load.image('dart', 'assets/dart.png');
-        game.load.image('explosion', 'assets/explosion.png');
-        game.load.image('spider', 'assets/spider.png');
-        game.load.image('scorpion', 'assets/scorpion.png');
-        game.load.image('flea', 'assets/flea.png');
-        game.load.atlas('')
+        game.load.atlas('Mr.Mandibles', 'assets/Mr.Mandibles.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('mushroom1', 'assets/mushroom1.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('mushroom2', 'assets/mushroom2.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('mushroom3', 'assets/mushroom3.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('mushroom4', 'assets/mushroom4.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('poisonMush1', 'assets/poisonMush1.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('poisonMush2', 'assets/poisonMush2.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('poisonMush3', 'assets/poisonMush3.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('poisonMush4', 'assets/poisonMush4.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('centipedeHead', 'assets/centi1.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('centipedeHeadDown', 'assets/centiHeadDown.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('centipedeHeadTurn', 'assets/centiHeadTurn.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('centipedeSegment', 'assets/bodySeg.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('centipedeSegmentDown', 'assets/bodySegDown.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('centipedeSegmentTurn', 'assets/bodySegTurn.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('dart', 'assets/dart.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('blasterReady', 'assets/blasterReady.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('blasterFire', 'assets/blasterFire.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('explosion1', 'assets/explosion1.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('explosion2', 'assets/explosion2.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('explosion3', 'assets/explosion3.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('explosion4', 'assets/explosion4.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('explosion5', 'assets/explosion5.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('explosion6', 'assets/explosion6.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('spider1', 'assets/spider1.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('spider2', 'assets/spider2.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('spider3', 'assets/spider3.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('spider4', 'assets/spider4.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('spider5', 'assets/spider5.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('spider6', 'assets/spider6.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('spider7', 'assets/spider7.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('spider8', 'assets/spider8.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('scorpion1', 'assets/scorpion1.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('scorpion2', 'assets/scorpion2.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('scorpion3', 'assets/scorpion3.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('scorpion4', 'assets/scorpion4.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('flea1', 'assets/flea1.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('flea2', 'assets/flea2.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('flea3', 'assets/flea3.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('flea4', 'assets/flea4.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('leftEndscreenGraphic', 'assets/leftEndscreenGraphic.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('rightEndscreenGraphic', 'assets/rightEndscreenGraphic.png', 'Mister-Mandibles/generalSprites.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
     },
+
     create: function () {
+        game.add.image (0, 0, "Black");
+        MrMandibles = game.add.sprite(453, 500, 'Mr.Mandibles', 'Mr.Mandibles.png');;
+        mushroom1 = game.add.sprite(8, 8, 'mushroom1', 'mushroom1.png');;
+        mushroom2 = game.add.sprite(8, 8, 'mushroom2', 'mushroom2.png');;
+        mushroom3 = game.add.sprite(8, 8, 'mushroom3', 'mushroom3.png');;
+        mushroom4 = game.add.sprite(8, 8, 'mushroom4', 'mushroom4.png');;
+        poisonMush1 = game.add.sprite(8, 8, 'poisonMush1', 'poisonMush1.png');;
+        poisonMush2 = game.add.sprite(8, 8, 'poisonMush2', 'poisonMush2.png');;
+        poisonMush3 = game.add.sprite(8, 8, 'poisonMush3', 'poisonMush3');;
+        poisonMush4 = game.add.sprite(8, 8, 'poisonMush4', 'poisonMush4.png');;
+        centipedeHead1 = game.add.sprite(16, 8, 'centipedeHead1', 'centi1.png');;
+        centipedeHead2 = game.add.sprite(16, 8, 'centipedeHead2', 'centiHeadDown.png');;
+        centipedeHead3 = game.add.sprite(16, 8, 'centipedeHead3', 'centHeadTurn.png');;
+        centipedeSegment1 = game.add.sprite(16, 8, 'centipedeSegment1', 'bodySeg.png');;
+        centipedeSegment2 = game.add.sprite(16, 8, 'centipedeSegment2', 'bodySegDown.png');;
+        centipedeSegment3 = game.add.sprite(16, 8, 'centipedeSegment3', 'bodySegTurn.png');;
+        dart = game.add.sprite(16, 8, 'dart', 'dart.png');;
+        blaster1 = game.add.sprite(16, 15, 'blaster1', 'blasterReady.png');;
+        blaster2 = game.add.sprite(16, 8, 'blaster2', 'blasterFire.png');;
+        explosion1 = game.add.sprite(16, 8, 'explosion1', 'explosion1.png');;
+        explosion2 = game.add.sprite(16, 8, 'explosion2', 'explosion2.png');;
+        explosion3 = game.add.sprite(16, 8, 'explosion3', 'explosion3.png');;
+        explosion4 = game.add.sprite(16, 8, 'explosion4', 'explosion4.png');;
+        explosion5 = game.add.sprite(16, 8, 'explosion5', 'explosion5.png');;
+        explosion6 = game.add.sprite(16, 8, 'explosion6', 'explosion6.png');;
+        spider1 = game.add.sprite(16, 8, 'spider1', 'spider.png');;
+        spider2 = game.add.sprite(16, 8, 'spider2', 'spider2.png');;
+        spider3 = game.add.sprite(16, 8, 'spider3', 'spider3.png');;
+        spider4 = game.add.sprite(16, 8, 'spider4', 'spider4.png');;
+        spider5 = game.add.sprite(16, 8, 'spider5', 'spider5.png');;
+        spider6 = game.add.sprite(16, 8, 'spider6', 'spider6.png');;
+        spider7 = game.add.sprite(16, 8, 'spider7', 'spider7.png');;
+        spider8 = game.add.sprite(16, 8, 'spider8', 'spider8.png');;
+        scorpion1 = game.add.sprite(16, 8, 'scorpion1', 'scorpion1.png');;
+        scorpion2 = game.add.sprite(16, 8, 'scorpion2', 'scorpion2.png');;
+        scorpion3 = game.add.sprite(16, 8, 'scorpion3', 'scorpion3.png');;
+        scorpion4 = game.add.sprite(16, 8, 'scorpion4', 'scorpion4.png');;
+        flea1 = game.add.sprite(16, 8, 'flea1', 'flea1.png');;
+        flea2 = game.add.sprite(16, 8, 'flea2', 'flea2.png');;
+        flea3 = game.add.sprite(16, 8, 'flea3', 'flea3.png');;
+        flea4 = game.add.sprite(16, 8, 'flea4', 'flea4.png');;
+        leftEndscreenGraphic = game.add.sprite(230, 500, 'leftEndscreenGraphic', 'leftEndscreenGraphic.png');;
+        rightEndscreenGraphic = game.add.sprite(230, 500, 'rigthEndscreenGraphic', 'rightEndscreenGraphic.png');;
+
+        animations.add('move', ['mushroom1.png', 'mushroom2.png', 'mushroom3.png', mushroom4.png], 5, true);
+        animations.add('move', ['poisonMush1.png', 'poisonMush2.png', 'poisonMush3.png', poisonMush4.png], 5, true);
+        animations.add('move', ['centi1.png', 'centHeadDown.png', 'centiHeadTurn.png'], 5, true);
+        animations.add('move', ['bodySeg.png', 'bodySegDown.png', 'bodySegTurn.png'], 5, true);
+        animations.add('move', ['blasterReady.png', 'blasterFire.png'], 5, true);
+        animations.add('move', ['explosion1.png', 'explosion2.png', 'explosion3.png', 'explosion4.png', 'explosion5.png', 'explosion6.png'], 5, true);
+        animations.add('move', ['spider1.png', 'spider2.png', 'spider3.png', 'spider4.png', 'spider5.png', 'spider6.png', 'spider7.png', 'spider8.png'], 5, true);
+        animations.add('move', ['scorpion1.png', 'scorpion2.png', 'scorpion3.png', 'scorpion4.png'], 5, true);
+        animations.add('move', ['flea1.png', 'flea2.png', 'flea3.png', 'flea4.png'], 5, true);
+
+        play('move');
+
+        game.physics.enable(mushroom, Phaser.Physics.ARCADE);
+            mushroom = game.add.group();
+            mushroom.enableBody = true;
+            mushroom.physicsdBodyType = Phaser.Physics.ARCADE;
+            mushroomHealth = 3;
+
+        game.physics.enable(poisonMush, Phaser.Physics.ARCADE);
+            mushroom = game.add.group();
+            mushroom.enableBody = true;
+            mushroom.physicsdBodyType = Phaser.Physics.ARCADE;
+            mushroomHealth = 3;
+
+        game.physics.enable(centipedeHead, Phaser.Physics.ARCADE);
+            mushroom = game.add.group();
+            mushroom.enableBody = true;
+            mushroom.physicsdBodyType = Phaser.Physics.ARCADE;
+            mushroomHealth = 3;
+
+        game.physics.enable(centipedeSegment, Phaser.Physics.ARCADE);
+            mushroom = game.add.group();
+            mushroom.enableBody = true;
+            mushroom.physicsdBodyType = Phaser.Physics.ARCADE;
+         mushroomHealth = 3;
+
+        game.physics.enable(blaster, Phaser.Physics.ARCADE);
+            mushroom = game.add.group();
+            mushroom.enableBody = true;
+            mushroom.physicsdBodyType = Phaser.Physics.ARCADE;
+            mushroomHealth = 3;
+
+        game.physics.enable(explosion, Phaser.Physics.ARCADE);
+            mushroom = game.add.group();
+            mushroom.enableBody = true;
+            mushroom.physicsdBodyType = Phaser.Physics.ARCADE;
+            mushroomHealth = 3;
+
+        game.physics.enable(spider, Phaser.Physics.ARCADE);
+            mushroom = game.add.group();
+            mushroom.enableBody = true;
+            mushroom.physicsdBodyType = Phaser.Physics.ARCADE;
+            mushroomHealth = 3;
+
+        game.physics.enable(scorpion, Phaser.Physics.ARCADE);
+            mushroom = game.add.group();
+            mushroom.enableBody = true;
+            mushroom.physicsdBodyType = Phaser.Physics.ARCADE;
+            mushroomHealth = 3;
+
+        game.physics.enable(flea, Phaser.Physics.ARCADE);
+            mushroom = game.add.group();
+            mushroom.enableBody = true;
+            mushroom.physicsdBodyType = Phaser.Physics.ARCADE;
+            mushroomHealth = 3;
 
     },
+        
+
     update: function () {
 
     }
