@@ -70,7 +70,39 @@ menu.draw = () => {
         </p>
       </div>
       `
+    } else if (menu.state == "credits") {
+        menuElement.innerHTML += `
+      <div>
+        <p>
+          Sounds from <a href="https://opengameart.org/content/laser-fire">dklon</a>
+          <br>
+          Sprites from <a href="https://www.pngkit.com/view/u2w7r5u2e6u2a9r5_general-sprites-centipede-arcade-game-sprites/">PNGKit</a>
+          <br>
+          Some code from <a href="https://www.usu.edu/directory/?person=56DB0BFCCAEECEC8D5">Dr. Mathias</a>
+          <br>
+          Developed by Logan Hunt
+        </p>
+      </div>
+    `
+    } else if (menu.state == "scores") {
+        menuElement.innerHTML += `
+      <div>
+        <p>
+        ${menu.scores.map((score, index) => `${index + 1}: ${score}<br>`).join("")}
+        </p>
+      </div>
+    `
+    } else if (menu.state == "game-over") {
+        menuElement.innerHTML += `
+      <div>
+        <p>
+          Game Over
+          <br>
+          Your final score was: ${game.score}
+      </div>
+    `
     }
+
     menuElement.innerHTML += "<div class='menu-button' onclick='menu.hide()'>Resume Game</div>"
     if (menu.state !== "main") {
         menuElement.innerHTML += "<div class='menu-button' onclick='menu.setState(\"main\")'>Back</div>"
@@ -84,11 +116,25 @@ menu.initialize();
 /*Initial Game Graphics*/
 console.log(Phaser.game)
 // `var Phaser = Phaser || {}`
-let game = new Phaser.Game(744, 1281, Phaser.AUTO);
+// class Game extends Phaser.Game {
+//     constructor() {
+//         super('100%', '100%', Phaser.AUTO, 'gameArea');}
+var game = new Phaser.Game(744, 1281, Phaser.CANVAS,'Mr. Mandibles', {
+    preload:preload, create:create, update:update});
+
+// game.state.add("GameState", "GameState");
 
 let gameState = {
     preload: function () {
-
+        game.load.image('centipede', 'assets/centipede.png');
+        game.load.image('mushroom', 'assets/mushroom.png');
+        game.load.image('blaster', 'assets/blaster.png');
+        game.load.image('dart', 'assets/dart.png');
+        game.load.image('explosion', 'assets/explosion.png');
+        game.load.image('spider', 'assets/spider.png');
+        game.load.image('scorpion', 'assets/scorpion.png');
+        game.load.image('flea', 'assets/flea.png');
+        game.load.atlas('')
     },
     create: function () {
 
@@ -97,8 +143,10 @@ let gameState = {
 
     }
 };
+// new Game();
 
-game.state.add("GameState", "GameState");
+
+Phaser.StateManager = function (game, pendingState) { };
 game.state.start("GameState");
 
 
@@ -305,3 +353,17 @@ game.sounds = {
     enemy_hit: new Audio("assets/enemyHit.mp3"),
     laser: new Audio("assets/pewpew.mp3"),
 };
+/*The game is constructed using PhaserJS. Version Phaser 2.19.
+PhaserJS is a custom build of PixiJS intended for game construction. 
+PhaserJS has a lot of benefits: It includes built in physics, sounds, and state,
+You can use map editors like Tiled,
+and it has input and collision built in. Phaser is built on states
+(i.e., a convenient and streamlined division into Boot, Preload, GameTitle, Main, and GameOver.
+    Boot- handles game setup and calls next state
+    Preload- loads any assets and calls GameTitle
+    GameTitle- displays title screen and menu/start
+    Main- handles the logic of the game itself and
+    GameOver- displays end screen and displays high scores and allows the game reset
+    
+    The great thing about it is that it does help organize code and each state is run individually
+    so the entire game structure is not being processed in the memory all at once.) */
